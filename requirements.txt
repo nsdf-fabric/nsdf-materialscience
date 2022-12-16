@@ -1,0 +1,11 @@
+jupyterlab
+
+pandas
+numpy
+scipy
+
+seaborn
+humanize
+tqdm
+
+OpenVisus

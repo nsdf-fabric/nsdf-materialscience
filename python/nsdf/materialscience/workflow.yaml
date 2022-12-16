@@ -1,0 +1,67 @@
+# http://nationalsciencedatafabric.org
+# This material is based upon work supported by the National Science Foundation under Grant No. 2138811. 
+# Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) 
+# and do not necessarily reflect the views of the National Science Foundation. Copyright © 2021 National Science Data Fabric
+
+
+# all the environment variables that will be used by the workflow and eventually passed to DASK workers
+env:
+
+  include-vault: 
+  - s3-wasabi
+
+  # where to store local files
+  LOCAL: /tmp/Pania_2021Q3_in_situ_data
+
+  # remote address where to store results
+  REMOTE: s3://Pania_2021Q3_in_situ_data
+
+# if you want to run task on a dask cluster
+dask:
+  enabled: True
+  inventory: ~/inventory.ini
+  group: chpc
+  num-process-per-host: 1
+  worker-local-dir: /tmp/nsdf/dask-workers
+
+# what task to execute (preprocess | convert)
+task: convert
+
+# to limit files and slices
+file-range:  0 -1 1
+slice-range: 0 -1 1
+
+# disable some part of the workflow
+disable-reconstruction: False
+disable-segmentation: False
+
+# openvisus convert part
+convert:
+  arco: 16mb
+  keep-local-image-stack: False
+  keep-local-idx: False
+
+# list of files to preprocess or convert
+files:
+
+  # ////////////////////////////////////////////////////////////// 1
+- url: s3://Pania_2021Q3_in_situ_data/hdf5/fly_scan_id_112509.h5
+  tot-slices: 2160
+  rotation-center: 1270
+  reconstruction-version: 1
+
+- url: s3://Pania_2021Q3_in_situ_data/hdf5/fly_scan_id_112512.h5
+  tot-slices: 2160
+  rotation-center: 1273
+  reconstruction-version: 1
+
+- url: s3://Pania_2021Q3_in_situ_data/hdf5/fly_scan_id_112515.h5
+  tot-slices: 2160
+  rotation-center: 1271.50
+  reconstruction-version: 1
+
+- url: s3://Pania_2021Q3_in_situ_data/hdf5/fly_scan_id_112517.h5
+  tot-slices: 2160
+  rotation-center: 1265
+  reconstruction-version: 1
+  
