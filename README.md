@@ -47,7 +47,7 @@ NSDF-materialscience was created by the [NSDF team](https://nationalsciencedataf
 
 # License
 
-NSDF-catalog is distributed under the terms of BSD 3-Clause License. 
+NSDF-materialscience is distributed under the terms of BSD 3-Clause License. 
 See LICENCE.txt file
 
 
