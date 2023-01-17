@@ -1,0 +1,19 @@
+name: materials-science
+channels:
+  - defaults
+dependencies:
+  - python=3.9
+  - numpy
+  - pillow
+  - pip
+  - jupyterlab
+  - opencv=4.5
+  - qt
+  - pyqt
+  - pip:
+    - scikit-image
+    - panel
+    - vtk
+    - OpenVisus
+    - tifffile
+prefix: /home/polaya/anaconda3/envs/materials-science #Change to the specific place where you anaconda is installed 
