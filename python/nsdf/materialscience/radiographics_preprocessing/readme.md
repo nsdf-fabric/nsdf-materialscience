@@ -6,6 +6,7 @@ Steps in preprocess:
  * Subtract the blurred image from the original image
  * Adjust brightness and contrast
  * Rotate the image 90 degrees clockwise  
+
 In average, we take by _n_ time consecutive images and average them to reduce the noise.  
 ### Installation
 The software stack required to run the workflow can be installed using Anaconda. Each of these options will installed the required dependencies.  
