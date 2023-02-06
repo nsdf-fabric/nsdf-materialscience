@@ -1,11 +1,11 @@
 ## Preprocessing radiographic for strain measurement
-This workflow preprocess radiographic data to measure the amount of stretch and compression along Silica or any other material. There are two main functions: preprocess and average. 
+This workflow preprocess radiographic data to measure the amount of stretch and compression along Silica or any other material. There are two main functions: preprocess and average.  
 Steps in preprocess:
  * Load the slices in the image stack
  * Gaussian blurred with sigma=30
  * Subtract the blurred image from the original image
  * Adjust brightness and contrast
- * Rotate the image 90o clockwise
+ * Rotate the image 90 degrees clockwise  
 In average, we take by _n_ time consecutive images and average them to reduce the noise.  
 ### Installation
 The software stack required to run the workflow can be installed using Anaconda. Each of these options will installed the required dependencies.
@@ -23,7 +23,9 @@ The software stack required to run the workflow can be installed using Anaconda.
   * vtk
   * OpenVisus
   * tifffile
-f you do not have Anaconda installed, you can follow the instructions here to install it. Make sure to change the prefix in install/env_conda to the location of Anaconda in your local machine (e.g., /opt/anaconda3/, /home/opt/anaconda3/)
+
+If you do not have Anaconda installed, you can follow the instructions here to install it. Make sure to change the prefix in `env_conda` to the location of Anaconda in your local machine (e.g., `/opt/anaconda3/`, `/home/opt/anaconda3/`)
+
 Run the next commands on your local machine:
 ```
 conda env create -f env_conda.yaml
