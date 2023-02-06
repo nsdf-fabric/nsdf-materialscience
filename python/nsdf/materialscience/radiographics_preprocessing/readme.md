@@ -43,4 +43,4 @@ To run all datasets, we use `run_alldirectories.py` where you need to provide th
 ```
 $ python3 run_alldirectories.py radigraphics/ preprocessed averaged 
 ```
-We have also run this workflow using Kubernetes. The instructions on how to run are in the `ks` directory. 
+We have also run this workflow using Kubernetes. The instructions are in the `ks` directory. 
