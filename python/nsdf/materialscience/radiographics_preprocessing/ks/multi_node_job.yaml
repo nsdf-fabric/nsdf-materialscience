@@ -1,0 +1,51 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: ms-$JOB-job
+  labels:
+    jobgroup: msjob
+spec:
+  template:
+    metadata: 
+      name: msjob
+      labels:
+        jobgroup: msjob
+    spec:
+      #schedulerName: fluence
+      containers:
+      - image: olayap/workflowb:latest
+        name: materials-science
+        command: ['/bin/bash','-c']
+        args:  ['time python3 preprocess_radiographs.py /original/$FILE/ /preprocessed/$FILE/ /averaged/$FILE/']
+        imagePullPolicy: Always
+        resources:
+          limits:
+            cpu: 10000m # This is how I limited 1 pod per node. 
+          requests:
+            cpu: 10000m
+          #limits:
+          #  memory: 8Gi
+        # I have the data in IBM COS.  
+        volumeMounts:
+        - name: radiographic-scans-tiffs
+          mountPath: /original
+        - name: preprocessed-radiographs
+          mountPath: /preprocessed
+        - name: averaged-radiographs
+          mountPath: /averaged
+      nodeSelector:
+        ibm-cloud.kubernetes.io/worker-pool-name: ms-workflowb #bx2.16x64
+      volumes:
+      - name: radiographic-scans-tiffs
+        persistentVolumeClaim:
+          claimName: pvc-original
+      - name: preprocessed-radiographs
+        persistentVolumeClaim:
+          claimName: pvc-preprocessed
+      - name: averaged-radiographs
+        persistentVolumeClaim:
+          claimName: pvc-averaged
+      restartPolicy: Never
+  backoffLimit: 7
+
+
