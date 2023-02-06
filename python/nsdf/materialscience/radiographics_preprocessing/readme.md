@@ -1,4 +1,4 @@
-## Preprocessing radiographic for strain measurement
+## Preprocessing radiographics for strain measurement
 This workflow preprocess radiographic data to measure the amount of stretch and compression along Silica or any other material. There are two main functions: preprocess and average.  
 Steps in preprocess:
  * Load the slices in the image stack
